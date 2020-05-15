@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.7.RELEASE</version>
+		<version>2.1.13.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.testapp</groupId>
 	<artifactId>testclient</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>testclient</name>
+	<name>testClient</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -21,11 +21,19 @@
 	</properties>
 
 	<dependencies>
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-webflux</artifactId>-->
-		<!--</dependency>-->
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -42,25 +50,27 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>io.projectreactor</groupId>-->
-			<!--<artifactId>reactor-test</artifactId>-->
-			<!--<scope>test</scope>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>com.wiley.author-services.clients</groupId>-->
-			<!--<artifactId>as-clients-literatum-webflux</artifactId>-->
-			<!--<version>${as-clients.version}</version>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>com.wiley.author-services.components</groupId>-->
-			<!--<artifactId>as-components-clients</artifactId>-->
-			<!--<version>${as-components.version}</version>-->
-		<!--</dependency>-->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.wiley.author-services.clients</groupId>
+			<artifactId>as-clients-literatum-webflux</artifactId>
+			<version>${as-clients.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.wiley.author-services.components</groupId>
+			<artifactId>as-components-clients</artifactId>
+			<version>${as-components.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.wiley.author-services.clients</groupId>
+			<artifactId>as-clients-literatum-model</artifactId>
+			<version>3.0.0-6-g889a24</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
