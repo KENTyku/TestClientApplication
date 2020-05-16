@@ -5,26 +5,26 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.function.Function;
+
 @Configuration
 public class ConfigClient {
     @Bean
     public LiteratumPdfClient literatumPdfClient() {
         WebClient.Builder webClientBuilder=WebClient.builder();
         return LiteratumPdfClient.builder()
-                .clientId("literatumPdfClientId")
-                .clientSecret("literatumPdfClientSecret")
+                .clientId("uImBOpjnnZ")
+                .clientSecret("WUmQBbmQ3kikw9zo5OYeukqXMF7qdglG")
                 .webClient(webClientBuilder)
-                .baseUri("url")
+                .baseUri("https://pericles.one-lts.literatumonline.com")
                 .reactorTcpOptions(tcp -> tcp.useSystemHttpProxyIgnoringNonProxyHosts())
-//                .reactorTcpOptions(tcp->tcp.defaultInscuredSsl())
-//                .mapException(extExceptionMapper(ASErrors.ARTICLE_PDF_DOWNLOADER_COMMUNICATION_ERROR))
+                .reactorTcpOptions(tcp->tcp.defaultInscuredSsl())
+                .mapException(extExceptionMapper(ASErrors.ARTICLE_PDF_DOWNLOADER_COMMUNICATION_ERROR))
                 .build();
     }
 
-//    @Bean
-//    public WebClient webClient(){
-//        return WebClient.builder()
-//                .baseUrl("url")
-//                .
-//    }
+    private Function<Exception, Exception> extExceptionMapper(ASErrors asError) {
+        return e ->
+                new ExtServiceException(asError, e.getMessage(), e);
+    }
 }
