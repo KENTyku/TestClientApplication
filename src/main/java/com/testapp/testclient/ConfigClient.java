@@ -23,6 +23,20 @@ public class ConfigClient {
                 .build();
     }
 
+    @Bean
+    LiteratumNewClient literatumNewClient() {
+        WebClient.Builder builder = WebClient.builder();
+        return LiteratumNewClient.builder()
+                .clientId("uImBOpjnnZ")
+                .clientSecret("WUmQBbmQ3kikw9zo5OYeukqXMF7qdglG")
+                .webClient(builder)
+                .baseUri("https://pericles.one-lts.literatumonline.com")
+                .reactorTcpOptions(tcp -> tcp.useSystemHttpProxyIgnoringNonProxyHosts())
+                .reactorTcpOptions(tcp -> tcp.defaultInscuredSsl())
+                .mapException(extExceptionMapper(ASErrors.ARTICLE_PDF_DOWNLOADER_COMMUNICATION_ERROR))
+                .build();
+    }
+
     private Function<Exception, Exception> extExceptionMapper(ASErrors asError) {
         return e ->
                 new ExtServiceException(asError, e.getMessage(), e);
