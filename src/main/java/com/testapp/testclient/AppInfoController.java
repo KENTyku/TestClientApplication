@@ -16,12 +16,8 @@ public class AppInfoController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ServiceResponse<InputStreamResource> getInfo() {
-        Cat cat=new Cat();
-        cat.setName("Boris");
-        InputStreamResource resource=literatumPdfClient.getPdf("doi").block();
-
+        InputStreamResource resource=literatumPdfClient.getPdf("10.1029/2018SW001921").block();
         return ServiceResponse.success(resource);
     }
-
 
 }
