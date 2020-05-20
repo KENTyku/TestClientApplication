@@ -73,6 +73,21 @@
 
 	</dependencies>
 
+	<repositories>
+		<repository>
+			<id>git-storage-repo</id>
+			<url>file:${basedir}/../repository</url>
+		</repository>
+		<repository>
+			<id>wiley-releases</id>
+			<url>http://nexus.aws.wiley.com:8081/nexus/content/repositories/releases</url>
+		</repository>
+		<repository>
+			<id>wiley-snapshots</id>
+			<url>http://nexus.aws.wiley.com:8081/nexus/content/repositories/snapshots</url>
+		</repository>
+	</repositories>
+
 	<build>
 		<plugins>
 			<plugin>
